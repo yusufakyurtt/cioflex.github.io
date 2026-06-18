@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Allow specific pages from dopamine folder to be accessed via root URLs
+RewriteRule ^privacy/?$ dopamine/privacy.html [L]
+RewriteRule ^terms/?$ dopamine/terms.html [L]
+RewriteRule ^support/?$ dopamine/support.html [L]
+RewriteRule ^account-deletion/?$ dopamine/account-deletion.html [L]
+
+# Remove .html extensions
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L,QSA]

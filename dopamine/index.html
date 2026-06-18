@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dopamine! — Mobile Economy Simulation</title>
+<meta name="description" content="A mobile economy simulation combining order, courier, task, investment, and reward loops under a single hard visual language." />
+<meta property="og:title" content="Dopamine! — Mobile Economy Simulation" />
+<meta property="og:description" content="A mobile economy simulation combining order, courier, task, investment, and reward loops under a single hard visual language." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cioflexlabs.com/dopamine/" />
+<meta property="og:image" content="https://cioflexlabs.com/assets/og-dopamine.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://cioflexlabs.com/assets/og-dopamine.png" />
+<link rel="canonical" href="https://cioflexlabs.com/dopamine/" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Fraunces', 'Georgia', 'serif'],
+      },
+      colors: {
+        background: 'oklch(0.13 0.012 60)',
+        foreground: 'oklch(0.95 0.02 80)',
+        muted: { DEFAULT: 'oklch(0.20 0.012 60)', foreground: 'oklch(0.65 0.02 70)' },
+        border: 'oklch(0.28 0.014 60)',
+        card: { DEFAULT: 'oklch(0.16 0.014 55)', foreground: 'oklch(0.95 0.02 80)' },
+        accent: 'oklch(0.68 0.22 35)',
+      },
+    }
+  }
+}
+</script>
+<style>
+  :root {
+    --accent: oklch(0.68 0.22 35);
+    --accent-soft: oklch(0.80 0.17 55);
+    --gradient-accent: linear-gradient(135deg, oklch(0.82 0.17 60), oklch(0.60 0.24 28));
+    --surface: oklch(0.13 0.012 60);
+    --surface-2: oklch(0.16 0.014 55);
+    --cream: oklch(0.95 0.02 80);
+    --border: oklch(0.28 0.014 60 / 0.6);
+    --muted-fg: oklch(0.65 0.02 70);
+  }
+  body { background: var(--surface); color: var(--cream); font-family: 'Inter', system-ui, sans-serif; }
+  .font-display { font-family: 'Fraunces', Georgia, serif; }
+  .grain {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    mix-blend-mode: overlay; opacity: .07;
+  }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .ticker { animation: ticker 36s linear infinite; }
+  .btn-accent { background: var(--gradient-accent); color: #000; box-shadow: 0 0 80px -10px oklch(0.68 0.22 35 / 0.5); }
+  .btn-ghost { border: 1px solid var(--border); }
+  .btn-ghost:hover { background: oklch(0.16 0.014 55 / 0.6); border-color: oklch(0.68 0.22 35 / 0.5); }
+  a.acc:hover { color: var(--cream); }
+</style>
+</head>
+<body class="antialiased">
+
+<main class="relative w-full overflow-x-hidden" style="background: var(--surface)">
+<div aria-hidden class="grain pointer-events-none fixed inset-0 z-0"></div>
+<div aria-hidden class="pointer-events-none fixed -top-60 left-1/2 z-0 h-[600px] w-[1100px] -translate-x-1/2 rounded-full blur-3xl" style="background: radial-gradient(closest-side, oklch(0.68 0.22 35 / 0.22), transparent)"></div>
+
+<header class="sticky top-0 z-30 border-b backdrop-blur-xl" style="border-color: var(--border); background: oklch(0.13 0.012 60 / 0.7)">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-8 sm:py-4 lg:px-10">
+    <a href="/" class="inline-flex items-center gap-1.5 text-[11px] font-medium tracking-[0.15em] sm:text-[12px]" style="color: var(--muted-fg)">← CIOFLEXLABS</a>
+    <div class="flex items-center gap-1.5 sm:gap-2">
+      <a href="#sistemler" class="hidden rounded-full px-3 py-1.5 text-[12px] font-medium sm:inline-flex" style="color: var(--muted-fg)">Systems</a>
+      <a href="#manifesto" class="hidden rounded-full px-3 py-1.5 text-[12px] font-medium sm:inline-flex" style="color: var(--muted-fg)">Manifesto</a>
+      <a href="#download" class="btn-accent inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[12px] font-semibold sm:px-4 sm:py-2 sm:text-[13px]">Go to App ↗</a>
+    </div>
+  </div>
+</header>
+
+<section class="relative z-10 mx-auto max-w-6xl px-5 pb-20 pt-6 sm:px-8 sm:pb-28 sm:pt-10 lg:px-10 lg:pb-32 lg:pt-12">
+  <div class="mt-6 sm:mt-8 lg:mt-10">
+    <div class="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[10px] tracking-[0.2em] backdrop-blur-md sm:text-[11px]" style="border: 1px solid var(--border); background: oklch(0.16 0.014 55 / 0.4); color: var(--muted-fg)">
+      <span style="color: var(--accent)">⚡</span><span>INDEPENDENT PRODUCTION · 2026</span>
+    </div>
+    <h1 class="mt-6 font-display tracking-tight sm:mt-8" style="font-size: clamp(3.25rem, 14vw, 11rem); line-height: 0.82; letter-spacing: -0.03em">DOPAMINE<span style="color: var(--accent)">!</span></h1>
+    <p class="mt-8 max-w-2xl text-[15px] leading-relaxed sm:mt-10 sm:text-[18px]" style="color: var(--muted-fg)">
+      Place orders. Watch the courier. Collect tasks. Spin the wheel. Grow your investment.
+      <span style="color: var(--cream)"> DOPAMINE!</span> is a stylized mobile economy universe combining order, courier, task, investment, and reward loops under a single hard visual language.
+      
+    </p>
+    <div class="mt-10 flex flex-wrap items-center gap-3 sm:mt-12 sm:gap-4">
+      <a href="#download" class="btn-accent inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-[13px] font-bold sm:px-7 sm:py-4 sm:text-sm">Go to App ↗</a>
+      <a href="#sistemler" class="btn-ghost rounded-full px-6 py-3.5 text-[13px] font-medium sm:px-7 sm:py-4 sm:text-sm">Explore the system</a>
+    </div>
+  </div>
+</section>
+
+<section class="relative z-10 border-y py-3 sm:py-4 overflow-hidden" style="border-color: var(--border); background: oklch(0.11 0.012 60)">
+  <div class="ticker flex gap-10 whitespace-nowrap text-[12px] font-semibold tracking-[0.3em] sm:text-[14px]"><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">SPEED</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">FLOW</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">REWARD</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">STATUS</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">DELIVERY</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">PROGRESSION</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">ECONOMIC POWER</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">LIVING WORLD</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">SPEED</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">FLOW</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">REWARD</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">STATUS</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">DELIVERY</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">PROGRESSION</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">ECONOMIC POWER</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">LIVING WORLD</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">SPEED</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">FLOW</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">REWARD</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">STATUS</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">DELIVERY</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">PROGRESSION</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">ECONOMIC POWER</span><span style="color: var(--accent)">✺</span></span><span class="inline-flex items-center gap-10"><span style="color: var(--cream)">LIVING WORLD</span><span style="color: var(--accent)">✺</span></span></div>
+</section>
+
+<section id="sistemler" class="relative z-10 mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 lg:px-10 lg:py-32">
+  <header class="flex items-end justify-between border-b pb-6 sm:pb-7" style="border-color: var(--border)">
+    <div>
+      <span class="text-[10px] tracking-[0.3em] sm:text-[11px]" style="color: var(--muted-fg)">— CHAPTER I</span>
+      <h2 class="mt-2 font-display text-4xl tracking-tight sm:text-6xl">Systems</h2>
+    </div>
+    <span class="hidden text-[11px] tracking-[0.25em] sm:inline" style="color: var(--muted-fg)">06 MODULES</span>
+  </header>
+  <div class="mt-12 grid sm:mt-16 grid-cols-1 gap-px overflow-hidden rounded-2xl md:grid-cols-2 lg:grid-cols-3" style="background: var(--border); border: 1px solid var(--border)">
+    
+<article class="group relative overflow-hidden p-6 sm:p-7" style="background: var(--surface-2)">
+  <div class="flex items-start justify-between">
+    <span class="font-display text-3xl tracking-tight" style="color: var(--accent)">01</span>
+    <div class="grid h-9 w-9 place-items-center rounded-full" style="background: var(--surface); border: 1px solid var(--border)">
+      <span style="color: var(--accent-soft); font-size: 14px">✦</span>
+    </div>
+  </div>
+  <h3 class="mt-8 font-display text-3xl leading-tight tracking-tight sm:text-4xl">Store</h3>
+  <div class="mt-1 text-[11px] tracking-[0.2em]" style="color: var(--muted-fg)">— 9 CATEGORIES</div>
+  <p class="mt-4 text-[13px] leading-relaxed sm:text-[14px]" style="color: var(--muted-fg)">From fast food to hypercars; a product universe presented with a premium yet ironic economic language. Real e-commerce feel, game economy mechanics.</p>
+</article>
+
+<article class="group relative overflow-hidden p-6 sm:p-7" style="background: var(--surface-2)">
+  <div class="flex items-start justify-between">
+    <span class="font-display text-3xl tracking-tight" style="color: var(--accent)">02</span>
+    <div class="grid h-9 w-9 place-items-center rounded-full" style="background: var(--surface); border: 1px solid var(--border)">
+      <span style="color: var(--accent-soft); font-size: 14px">✦</span>
+    </div>
+  </div>
+  <h3 class="mt-8 font-display text-3xl leading-tight tracking-tight sm:text-4xl">Live Courier</h3>
+  <div class="mt-1 text-[11px] tracking-[0.2em]" style="color: var(--muted-fg)">— ON MAP</div>
+  <p class="mt-4 text-[13px] leading-relaxed sm:text-[14px]" style="color: var(--muted-fg)">The order falls to the courier, progresses in real-time on the map. Not just a menu-based game — a living system.</p>
+</article>
+
+<article class="group relative overflow-hidden p-6 sm:p-7" style="background: var(--surface-2)">
+  <div class="flex items-start justify-between">
+    <span class="font-display text-3xl tracking-tight" style="color: var(--accent)">03</span>
+    <div class="grid h-9 w-9 place-items-center rounded-full" style="background: var(--surface); border: 1px solid var(--border)">
+      <span style="color: var(--accent-soft); font-size: 14px">✦</span>
+    </div>
+  </div>
+  <h3 class="mt-8 font-display text-3xl leading-tight tracking-tight sm:text-4xl">Task & Luck</h3>
+  <div class="mt-1 text-[11px] tracking-[0.2em]" style="color: var(--muted-fg)">— DOPAMINE WHEEL</div>
+  <p class="mt-4 text-[13px] leading-relaxed sm:text-[14px]" style="color: var(--muted-fg)">Micro-tasks, achievements, daily rewards, dopamine wheel. The next small win is always very close.</p>
+</article>
+
+<article class="group relative overflow-hidden p-6 sm:p-7" style="background: var(--surface-2)">
+  <div class="flex items-start justify-between">
+    <span class="font-display text-3xl tracking-tight" style="color: var(--accent)">04</span>
+    <div class="grid h-9 w-9 place-items-center rounded-full" style="background: var(--surface); border: 1px solid var(--border)">
+      <span style="color: var(--accent-soft); font-size: 14px">✦</span>
+    </div>
+  </div>
+  <h3 class="mt-8 font-display text-3xl leading-tight tracking-tight sm:text-4xl">Wallet</h3>
+  <div class="mt-1 text-[11px] tracking-[0.2em]" style="color: var(--muted-fg)">— DOP ECONOMY</div>
+  <p class="mt-4 text-[13px] leading-relaxed sm:text-[14px]" style="color: var(--muted-fg)">DOP balance, spending and earning history, packages. The financial dashboard of the simulation economy.</p>
+</article>
+
+<article class="group relative overflow-hidden p-6 sm:p-7" style="background: var(--surface-2)">
+  <div class="flex items-start justify-between">
+    <span class="font-display text-3xl tracking-tight" style="color: var(--accent)">05</span>
+    <div class="grid h-9 w-9 place-items-center rounded-full" style="background: var(--surface); border: 1px solid var(--border)">
+      <span style="color: var(--accent-soft); font-size: 14px">✦</span>
+    </div>
+  </div>
+  <h3 class="mt-8 font-display text-3xl leading-tight tracking-tight sm:text-4xl">Investments</h3>
+  <div class="mt-1 text-[11px] tracking-[0.2em]" style="color: var(--muted-fg)">— PASSIVE INCOME</div>
+  <p class="mt-4 text-[13px] leading-relaxed sm:text-[14px]" style="color: var(--muted-fg)">Unlock investments, upgrade their levels, generate passive income. Offline progression, strategic growth layer.</p>
+</article>
+
+<article class="group relative overflow-hidden p-6 sm:p-7" style="background: var(--surface-2)">
+  <div class="flex items-start justify-between">
+    <span class="font-display text-3xl tracking-tight" style="color: var(--accent)">06</span>
+    <div class="grid h-9 w-9 place-items-center rounded-full" style="background: var(--surface); border: 1px solid var(--border)">
+      <span style="color: var(--accent-soft); font-size: 14px">✦</span>
+    </div>
+  </div>
+  <h3 class="mt-8 font-display text-3xl leading-tight tracking-tight sm:text-4xl">Profile</h3>
+  <div class="mt-1 text-[11px] tracking-[0.2em]" style="color: var(--muted-fg)">— IDENTITY</div>
+  <p class="mt-4 text-[13px] leading-relaxed sm:text-[14px]" style="color: var(--muted-fg)">Player identity, collection, badges and achievements, invite system. Social and personal ownership.</p>
+</article>
+  </div>
+</section>
+
+<section class="relative z-10 mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 lg:px-10 lg:py-32">
+  <header class="flex items-end justify-between border-b pb-6 sm:pb-7" style="border-color: var(--border)">
+    <div>
+      <span class="text-[10px] tracking-[0.3em] sm:text-[11px]" style="color: var(--muted-fg)">— CHAPTER II</span>
+      <h2 class="mt-2 font-display text-4xl tracking-tight sm:text-6xl">Categories</h2>
+    </div>
+    <span class="hidden text-[11px] tracking-[0.25em] sm:inline" style="color: var(--muted-fg)">09 SHELVES</span>
+  </header>
+  <div class="mt-12 grid sm:mt-16 grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-3">
+    
+<div class="group relative flex items-center justify-between overflow-hidden rounded-2xl px-5 py-5 sm:px-6 sm:py-7" style="background: var(--surface-2); border: 1px solid var(--border)">
+  <div>
+    <div class="text-[10px] tracking-[0.25em]" style="color: var(--muted-fg)">— 01</div>
+    <div class="mt-2 font-display text-xl tracking-tight sm:text-2xl">Fast Food</div>
+  </div>
+  <span style="color: var(--accent)">↗</span>
+</div>
+
+<div class="group relative flex items-center justify-between overflow-hidden rounded-2xl px-5 py-5 sm:px-6 sm:py-7" style="background: var(--surface-2); border: 1px solid var(--border)">
+  <div>
+    <div class="text-[10px] tracking-[0.25em]" style="color: var(--muted-fg)">— 02</div>
+    <div class="mt-2 font-display text-xl tracking-tight sm:text-2xl">Luxury Tech</div>
+  </div>
+  <span style="color: var(--accent)">↗</span>
+</div>
+
+<div class="group relative flex items-center justify-between overflow-hidden rounded-2xl px-5 py-5 sm:px-6 sm:py-7" style="background: var(--surface-2); border: 1px solid var(--border)">
+  <div>
+    <div class="text-[10px] tracking-[0.25em]" style="color: var(--muted-fg)">— 03</div>
+    <div class="mt-2 font-display text-xl tracking-tight sm:text-2xl">Supermarket</div>
+  </div>
+  <span style="color: var(--accent)">↗</span>
+</div>
+
+<div class="group relative flex items-center justify-between overflow-hidden rounded-2xl px-5 py-5 sm:px-6 sm:py-7" style="background: var(--surface-2); border: 1px solid var(--border)">
+  <div>
+    <div class="text-[10px] tracking-[0.25em]" style="color: var(--muted-fg)">— 04</div>
+    <div class="mt-2 font-display text-xl tracking-tight sm:text-2xl">Hypercars</div>
+  </div>
+  <span style="color: var(--accent)">↗</span>
+</div>
+
+<div class="group relative flex items-center justify-between overflow-hidden rounded-2xl px-5 py-5 sm:px-6 sm:py-7" style="background: var(--surface-2); border: 1px solid var(--border)">
+  <div>
+    <div class="text-[10px] tracking-[0.25em]" style="color: var(--muted-fg)">— 05</div>
+    <div class="mt-2 font-display text-xl tracking-tight sm:text-2xl">Fashion</div>
+  </div>
+  <span style="color: var(--accent)">↗</span>
+</div>
+
+<div class="group relative flex items-center justify-between overflow-hidden rounded-2xl px-5 py-5 sm:px-6 sm:py-7" style="background: var(--surface-2); border: 1px solid var(--border)">
+  <div>
+    <div class="text-[10px] tracking-[0.25em]" style="color: var(--muted-fg)">— 06</div>
+    <div class="mt-2 font-display text-xl tracking-tight sm:text-2xl">Gaming</div>
+  </div>
+  <span style="color: var(--accent)">↗</span>
+</div>
+
+<div class="group relative flex items-center justify-between overflow-hidden rounded-2xl px-5 py-5 sm:px-6 sm:py-7" style="background: var(--surface-2); border: 1px solid var(--border)">
+  <div>
+    <div class="text-[10px] tracking-[0.25em]" style="color: var(--muted-fg)">— 07</div>
+    <div class="mt-2 font-display text-xl tracking-tight sm:text-2xl">Real Estate</div>
+  </div>
+  <span style="color: var(--accent)">↗</span>
+</div>
+
+<div class="group relative flex items-center justify-between overflow-hidden rounded-2xl px-5 py-5 sm:px-6 sm:py-7" style="background: var(--surface-2); border: 1px solid var(--border)">
+  <div>
+    <div class="text-[10px] tracking-[0.25em]" style="color: var(--muted-fg)">— 08</div>
+    <div class="mt-2 font-display text-xl tracking-tight sm:text-2xl">Entertainment</div>
+  </div>
+  <span style="color: var(--accent)">↗</span>
+</div>
+
+<div class="group relative flex items-center justify-between overflow-hidden rounded-2xl px-5 py-5 sm:px-6 sm:py-7" style="background: var(--surface-2); border: 1px solid var(--border)">
+  <div>
+    <div class="text-[10px] tracking-[0.25em]" style="color: var(--muted-fg)">— 09</div>
+    <div class="mt-2 font-display text-xl tracking-tight sm:text-2xl">Travel</div>
+  </div>
+  <span style="color: var(--accent)">↗</span>
+</div>
+  </div>
+</section>
+
+<section id="manifesto" class="relative z-10 mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 lg:px-10 lg:py-32">
+  <div class="relative overflow-hidden rounded-3xl p-8 sm:p-14 lg:p-16" style="background: var(--surface-2); border: 1px solid var(--border)">
+    <span class="text-[10px] tracking-[0.3em] sm:text-[11px]" style="color: var(--muted-fg)">— MANIFESTO</span>
+    <p class="mt-6 font-display tracking-tight sm:mt-8" style="font-size: clamp(1.7rem, 4.2vw, 3.5rem); line-height: 1.1">
+      This is <span class="italic" style="color: var(--accent)">not</span> a casual game.
+      This is <span class="italic" style="color: var(--accent)">not</span> a fintech product either.
+      <span style="color: var(--cream)">A stylized mobile economy universe running on spending, speed, status, delivery, and progression.</span>
+    </p>
+    <div class="mt-12 grid grid-cols-2 gap-x-6 gap-y-3 border-t pt-8 text-[11px] tracking-[0.25em] sm:mt-16 sm:grid-cols-4 sm:pt-10 sm:text-[12px]" style="border-color: var(--border); color: var(--muted-fg)">
+      <span class="border-l pl-3" style="border-color: var(--border)">BOLD</span>
+<span class="border-l pl-3" style="border-color: var(--border)">ENERGETIC</span>
+<span class="border-l pl-3" style="border-color: var(--border)">YOUTHFUL</span>
+<span class="border-l pl-3" style="border-color: var(--border)">SOLID</span>
+<span class="border-l pl-3" style="border-color: var(--border)">MECHANICAL</span>
+<span class="border-l pl-3" style="border-color: var(--border)">PREMIUM</span>
+<span class="border-l pl-3" style="border-color: var(--border)">EDITORIAL</span>
+<span class="border-l pl-3" style="border-color: var(--border)">DYSTOPIAN</span>
+    </div>
+    <div aria-hidden class="pointer-events-none absolute -right-32 -top-32 h-72 w-72 rounded-full blur-3xl" style="background: oklch(0.68 0.22 35 / 0.25)"></div>
+  </div>
+</section>
+
+<section id="download" class="relative z-10 mx-auto max-w-6xl px-5 pb-24 sm:px-8 sm:pb-32 lg:px-10 lg:pb-36">
+  <div class="relative overflow-hidden rounded-3xl p-8 sm:p-14 lg:p-16" style="border: 1px solid oklch(0.68 0.22 35 / 0.4); background: linear-gradient(160deg, oklch(0.22 0.06 40 / 0.7), oklch(0.13 0.012 60 / 0.95))">
+    <div class="flex flex-col items-start justify-between gap-7 sm:flex-row sm:items-end">
+      <div class="max-w-xl">
+        <span class="text-[10px] tracking-[0.3em] sm:text-[11px]" style="color: var(--muted-fg)">— EARLY ACCESS</span>
+        <h3 class="mt-3 font-display tracking-tight" style="font-size: clamp(2rem, 5.5vw, 4.5rem); line-height: 0.95">Join the <span class="italic" style="color: var(--accent)">economy.</span></h3>
+      </div>
+      <a href="#" class="btn-accent inline-flex shrink-0 items-center gap-2 rounded-full px-6 py-3.5 text-[14px] font-bold sm:px-8 sm:py-4">Go to App ↗</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="relative z-10 border-t" style="border-color: var(--border)">
+  <div class="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-10 lg:px-10">
+    <div class="flex flex-wrap items-center gap-x-6 gap-y-3 text-[10px] tracking-[0.25em] sm:text-[11px]" style="color: var(--muted-fg)">
+      <a class="acc transition" href="/privacy">PRIVACY</a>
+      <a class="acc transition" href="/terms">TERMS OF USE</a>
+      <a class="acc transition" href="/support">SUPPORT</a>
+      <a class="acc transition" href="/account-deletion">ACCOUNT DELETION</a>
+    </div>
+    <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t pt-6 text-[10px] tracking-[0.25em] sm:text-[11px]" style="border-color: var(--border); color: var(--muted-fg)">
+      <span>DOPAMINE! · 2026 © CIOFLEXLABS</span>
+      <a class="acc transition" href="/">← BACK TO STUDIO</a>
+    </div>
+  </div>
+</footer>
+</body></html>
