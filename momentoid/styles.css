@@ -134,7 +134,7 @@ img {
   min-height: 100vh;
   background:
     linear-gradient(90deg, rgba(23, 27, 29, 0.96) 0%, rgba(23, 27, 29, 0.80) 42%, rgba(23, 27, 29, 0.36) 100%),
-    url("../src/assets/in-camera-ui.png") 76% center / min(720px, 58vw) auto no-repeat,
+    url("assets/in-camera-ui.png") 76% center / min(720px, 58vw) auto no-repeat,
     linear-gradient(135deg, #171b1d, #263b32 58%, #12100e);
   color: var(--porcelain);
   position: relative;
@@ -307,7 +307,7 @@ h1,
   aspect-ratio: 1 / 1;
   background:
     linear-gradient(160deg, rgba(197, 138, 69, 0.30), rgba(47, 83, 100, 0.22)),
-    url("../src/assets/in-camera-ui.png") center / cover;
+    url("assets/in-camera-ui.png") center / cover;
   filter: sepia(0.15) saturate(0.78) contrast(1.04);
 }
 
@@ -719,7 +719,7 @@ footer {
   .hero-shell {
     background:
       linear-gradient(180deg, rgba(23, 27, 29, 0.97), rgba(23, 27, 29, 0.84)),
-      url("../src/assets/in-camera-ui.png") center bottom / 118vw auto no-repeat,
+      url("assets/in-camera-ui.png") center bottom / 118vw auto no-repeat,
       linear-gradient(135deg, #171b1d, #263b32 58%, #12100e);
   }
 
