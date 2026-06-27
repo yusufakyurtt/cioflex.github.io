@@ -1,153 +1,202 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Momentoid Terms of Use</title>
-  <style>
-    :root {
-      --bg: #faf5f2;
-      --paper: rgba(255,255,255,0.64);
-      --ink: #1a1a1a;
-      --muted: #6a6661;
-      --line: rgba(26,26,26,0.08);
-      --accent: #bd1a1a;
-      --shadow: 0 18px 50px rgba(31, 21, 18, 0.08);
-      --radius: 28px;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at top right, rgba(189,26,26,0.08), transparent 28%),
-        var(--bg);
-      font-family: Georgia, "Times New Roman", serif;
-    }
-    a { color: inherit; text-decoration: none; }
-    .page { width: min(920px, calc(100% - 32px)); margin: 0 auto; padding: 20px 0 56px; }
-    .nav, footer { display: flex; justify-content: space-between; gap: 16px; align-items: center; flex-wrap: wrap; }
-    .nav { padding: 16px 0 24px; }
-    .brand { font-size: 1.45rem; font-weight: 700; letter-spacing: -0.03em; }
-    .nav-links, .footer-links { display: flex; flex-wrap: wrap; gap: 10px; }
-    .nav-links a, .footer-links a {
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.45);
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-    .card {
-      background: var(--paper);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255,255,255,0.55);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius);
-      padding: 28px;
-    }
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 12px;
-      font-family: "Courier New", monospace;
-      font-size: 0.78rem;
-      letter-spacing: 0.22em;
-      color: var(--accent);
-    }
-    h1 { margin: 0; font-size: clamp(2.2rem, 6vw, 4rem); line-height: 0.95; letter-spacing: -0.05em; }
-    .intro { color: var(--muted); font-size: 1rem; line-height: 1.75; max-width: 58ch; margin-top: 16px; }
-    .meta { margin-top: 18px; color: var(--muted); font-size: 0.93rem; }
-    .section { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
-    .section h2 { margin: 0 0 10px; font-size: 1.2rem; letter-spacing: -0.03em; }
-    .section p, .section li { color: var(--muted); line-height: 1.78; }
-    ul { margin: 0; padding-left: 18px; }
-    .email-link {
-      color: var(--accent);
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-    }
-    footer { margin-top: 20px; padding-top: 4px; }
-    .footnote { color: var(--muted); font-size: 0.92rem; }
-    @media (max-width: 640px) {
-      .page { width: min(100% - 20px, 920px); }
-      .card { padding: 22px; }
-      .nav { flex-direction: column; align-items: flex-start; }
-      .nav-links, .footer-links { width: 100%; }
-      .nav-links a, .footer-links a { flex: 1 1 auto; text-align: center; }
-    }
-  </style>
+  <meta name="description" content="Terms of Use for Momentoid, a polaroid-style photo memory journal app." />
+  <link rel="icon" href="../src/assets/momentoid-app-icon.png" />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <div class="page">
-    <nav class="nav">
-      <a class="brand" href="./index.html">Momentoid</a>
+  <div class="legal-layout">
+    <nav class="nav light" aria-label="Primary navigation">
+      <a class="brand dark" href="./index.html" aria-label="Momentoid home">
+        <img src="../src/assets/momentoid-app-icon.png" alt="" />
+        <span>Momentoid</span>
+      </a>
       <div class="nav-links">
-        <a href="./index.html">Landing</a>
+        <a href="./index.html">Home</a>
         <a href="./privacy.html">Privacy</a>
-        <a href="./support.html">Support</a>
+        <a href="mailto:cioflexdev@gmail.com">Contact</a>
       </div>
     </nav>
 
-    <main class="card">
-      <span class="eyebrow">TERMS OF USE</span>
-      <h1>Terms of Use</h1>
-      <p class="intro">These terms govern your access to and use of the Momentoid application. By continuing to use the app, you agree to the conditions described below.</p>
-      <div class="meta">Last updated: June 24, 2026</div>
+    <div class="legal-wrap">
+      <header class="legal-hero">
+        <div class="legal-heading">
+          <span class="eyebrow">Terms of Use</span>
+          <h1 class="legal-title">The simple agreement behind the app.</h1>
+        </div>
+        <aside class="legal-summary" aria-label="Terms of use summary">
+          <p class="legal-intro">
+            These Terms of Use govern your access to and use of Momentoid. By downloading, purchasing, subscribing to, or using the app, you agree to these terms.
+          </p>
+          <div class="meta-line">
+            <span>Effective date: June 28, 2026</span>
+            <span>Contact: cioflexdev@gmail.com</span>
+          </div>
+          <p class="legal-note">Short version: use Momentoid lawfully, keep rights to your own content, and manage App Store purchases through Apple.</p>
+        </aside>
+      </header>
 
-      <section class="section">
-        <h2>1. Scope of the service</h2>
-        <p>Momentoid is a mobile app that helps users capture photos, apply filters, create a polaroid-style presentation, and share their content. Some features may be available for free, while others may require payment.</p>
+    <main class="legal-card">
+      <section class="legal-section">
+        <h2>1. The service</h2>
+        <div>
+          <p>Momentoid is a mobile app for capturing photos, creating polaroid-style photo memories, applying analog-inspired filters, adding notes, saving images, and sharing your creations. Features may change over time as the app is improved.</p>
+        </div>
       </section>
 
-      <section class="section">
-        <h2>2. Acceptable use</h2>
-        <ul>
-          <li>You may not use the app in any unlawful, misleading, or rights-infringing way.</li>
-          <li>You may not reverse engineer, abuse, or interfere with the app or its services.</li>
-          <li>You are responsible for the content you create, store, or share.</li>
-        </ul>
+      <section class="legal-section">
+        <h2>2. Eligibility</h2>
+        <div>
+          <p>You must be old enough to use mobile apps and make purchases under the laws of your country or have permission from a parent or legal guardian. You are responsible for keeping your device and Apple account secure.</p>
+        </div>
       </section>
 
-      <section class="section">
-        <h2>3. User content</h2>
-        <p>You retain ownership of the photos, text, and other content you create through Momentoid. However, you grant the permissions reasonably necessary for the app to process that content in order to operate. You should avoid uploading or using content that violates the intellectual property rights of others.</p>
+      <section class="legal-section">
+        <h2>3. License</h2>
+        <div>
+          <p>We grant you a limited, personal, non-exclusive, non-transferable, revocable license to use Momentoid for personal, lawful purposes according to these terms and the App Store rules. Momentoid is licensed, not sold.</p>
+          <p>These terms are in addition to Apple's standard App Store terms, including the Apple Licensed Application End User License Agreement, unless a separate agreement is required by applicable law.</p>
+        </div>
       </section>
 
-      <section class="section">
-        <h2>4. Premium features and payments</h2>
-        <p>The app may offer paid features or one-time purchase options. On iOS, payment processing is handled by Apple. Pricing, taxes, and refund rules are governed by the relevant store policies.</p>
+      <section class="legal-section">
+        <h2>4. Acceptable use</h2>
+        <div>
+          <p>You agree that you will not:</p>
+          <ul>
+            <li>Use the app for unlawful, harmful, abusive, deceptive, or rights-infringing activity.</li>
+            <li>Upload, create, or share content that violates another person's intellectual property, privacy, publicity, or other rights.</li>
+            <li>Reverse engineer, decompile, modify, resell, rent, or exploit the app except where allowed by law.</li>
+            <li>Interfere with app security, purchases, analytics, notifications, or third-party infrastructure.</li>
+            <li>Use automation, abuse, or fraudulent behavior to access premium features or disrupt the app.</li>
+          </ul>
+        </div>
       </section>
 
-      <section class="section">
-        <h2>5. Availability</h2>
-        <p>We aim to provide a reliable service, but the app may occasionally be unavailable due to maintenance, technical issues, integration failures, or third-party outages. We do not guarantee uninterrupted availability for any specific period of time.</p>
+      <section class="legal-section">
+        <h2>5. User content</h2>
+        <div>
+          <p>You retain ownership of photos, captions, notes, and other content you create or import through Momentoid. You are responsible for your content and for ensuring you have the rights needed to use, edit, save, and share it.</p>
+          <p>You grant Momentoid the limited permission needed to process your content inside the app so features such as capture, editing, filtering, framing, saving, and sharing can function.</p>
+        </div>
       </section>
 
-      <section class="section">
-        <h2>6. Limitation of liability</h2>
-        <p>To the fullest extent permitted by law, Momentoid is not liable for data loss, loss of revenue, indirect damages, or consequences resulting from third-party service interruptions. Users are responsible for appropriate use of the app and for keeping their own backups when needed.</p>
+      <section class="legal-section">
+        <h2>6. Premium features</h2>
+        <div>
+          <p>Momentoid may offer free features, premium features, one-time purchases, subscriptions, introductory offers, or free trials. Premium access may be required for unlimited memories, premium filters, app lock, or other paid features shown in the app.</p>
+          <p>Feature availability, pricing, trial eligibility, and purchase options may vary by country, platform, app version, and App Store configuration.</p>
+        </div>
       </section>
 
-      <section class="section">
-        <h2>7. Changes</h2>
-        <p>These terms may be updated from time to time. When material changes are made, the current version will be posted on this page. Continued use of the app after updates means you accept the revised terms.</p>
+      <section class="legal-section">
+        <h2>7. Payments and renewals</h2>
+        <div>
+          <p>Purchases and subscriptions made on iOS are processed by Apple through the App Store. Your Apple ID will be charged according to the price and terms shown before confirmation.</p>
+          <p>If a subscription is offered, it may automatically renew unless canceled at least 24 hours before the end of the current period. You can manage or cancel subscriptions in your Apple account settings. Deleting the app does not automatically cancel a subscription.</p>
+          <p>If a free trial is offered, unused trial time may be forfeited when you purchase a subscription, where permitted by Apple rules.</p>
+        </div>
       </section>
 
-      <section class="section">
-        <h2>8. Contact</h2>
-        <p>If you have questions about these terms, you may contact <a class="email-link" href="mailto:cioflexdev@gmail.com">cioflexdev@gmail.com</a>.</p>
+      <section class="legal-section">
+        <h2>8. Refunds</h2>
+        <div>
+          <p>Refunds for App Store purchases are handled by Apple according to Apple's policies. We cannot directly issue App Store refunds. If you believe you were charged incorrectly, request a refund through Apple support or reportaproblem.apple.com.</p>
+        </div>
+      </section>
+
+      <section class="legal-section">
+        <h2>9. App availability</h2>
+        <div>
+          <p>We try to keep Momentoid useful, stable, and available. However, the app may be interrupted by maintenance, operating system changes, device issues, third-party service outages, platform policy changes, or technical failures. We do not guarantee uninterrupted access or that every feature will remain available forever.</p>
+        </div>
+      </section>
+
+      <section class="legal-section">
+        <h2>10. Third-party services</h2>
+        <div>
+          <p>Momentoid may rely on third-party services for purchases, analytics, notifications, hosting, app infrastructure, and platform functionality. These services may have their own terms and policies. We are not responsible for third-party services outside our control.</p>
+        </div>
+      </section>
+
+      <section class="legal-section">
+        <h2>11. Privacy</h2>
+        <div>
+          <p>Your use of Momentoid is also governed by our <a class="email-link" href="./privacy.html">Privacy Policy</a>, which explains how information is handled when you use the app.</p>
+        </div>
+      </section>
+
+      <section class="legal-section">
+        <h2>12. Intellectual property</h2>
+        <div>
+          <p>Momentoid, including its app design, branding, graphics, interface, text, software, and related materials, is owned by us or our licensors and is protected by intellectual property laws. You may not copy, modify, distribute, or create derivative works from Momentoid except as allowed by these terms or applicable law.</p>
+        </div>
+      </section>
+
+      <section class="legal-section">
+        <h2>13. No professional advice</h2>
+        <div>
+          <p>Momentoid is a creative photo app. It does not provide legal, financial, medical, professional, archival, or backup advice. You are responsible for making independent decisions about how you store, back up, share, or publish your content.</p>
+        </div>
+      </section>
+
+      <section class="legal-section">
+        <h2>14. Disclaimers</h2>
+        <div>
+          <p>Momentoid is provided on an "as is" and "as available" basis. To the fullest extent permitted by law, we disclaim warranties of merchantability, fitness for a particular purpose, non-infringement, availability, accuracy, and error-free operation.</p>
+        </div>
+      </section>
+
+      <section class="legal-section">
+        <h2>15. Limitation of liability</h2>
+        <div>
+          <p>To the fullest extent permitted by law, we are not liable for indirect, incidental, special, consequential, exemplary, or punitive damages, or for loss of data, photos, revenue, profits, goodwill, or business opportunities arising from your use of or inability to use Momentoid.</p>
+          <p>Nothing in these terms limits liability that cannot legally be limited under applicable law.</p>
+        </div>
+      </section>
+
+      <section class="legal-section">
+        <h2>16. Termination</h2>
+        <div>
+          <p>We may suspend or terminate access to the app or certain features if you violate these terms, misuse the app, create risk for other users or the service, or where required by law or platform rules. You may stop using Momentoid at any time.</p>
+        </div>
+      </section>
+
+      <section class="legal-section">
+        <h2>17. Changes to terms</h2>
+        <div>
+          <p>We may update these terms from time to time. The latest version will be posted on this page with the effective date. Continued use of the app after updates become effective means you accept the revised terms.</p>
+        </div>
+      </section>
+
+      <section class="legal-section">
+        <h2>18. Governing law</h2>
+        <div>
+          <p>These terms are governed by applicable law, without regard to conflict of law principles, except where local consumer protection laws require otherwise. Some users may have additional rights under the laws of their country or region.</p>
+        </div>
+      </section>
+
+      <section class="legal-section">
+        <h2>19. Contact</h2>
+        <div>
+          <p>For questions about these Terms of Use, contact <a class="email-link" href="mailto:cioflexdev@gmail.com">cioflexdev@gmail.com</a>.</p>
+        </div>
       </section>
     </main>
 
     <footer>
-      <div class="footnote">Momentoid terms information. Contact: <a class="email-link" href="mailto:cioflexdev@gmail.com">cioflexdev@gmail.com</a></div>
+      <span>© 2026 Momentoid. Terms information.</span>
       <div class="footer-links">
-        <a href="./index.html">Landing</a>
+        <a href="./index.html">Home</a>
         <a href="./privacy.html">Privacy</a>
-        <a href="./support.html">Support</a>
+        <a href="mailto:cioflexdev@gmail.com">Contact</a>
       </div>
     </footer>
+    </div>
   </div>
 </body>
 </html>
