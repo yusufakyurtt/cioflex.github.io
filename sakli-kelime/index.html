@@ -3,97 +3,442 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sakli Kelime</title>
-  <meta name="description" content="Landing, support, privacy, account deletion, and terms pages for Sakli Kelime.">
-  <link rel="stylesheet" href="./styles.css">
+  <title>Sakli Kelime - Competitive Turkish Word Game</title>
+  <meta name="description" content="Guess the daily 5-letter word in 6 tries, enter duels, climb the leaderboard, and experience a competitive Turkish word game.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    body{
+      font-family:'Inter',system-ui,-apple-system,sans-serif;
+      background:#fffdf7;
+      color:#101010;
+      line-height:1.5;
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
+    body::before{
+      content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+      background:
+        linear-gradient(rgba(255,255,255,.18),rgba(255,255,255,.18)),
+        linear-gradient(90deg, rgba(16,16,16,.028) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(16,16,16,.024) 1px, transparent 1px);
+      background-size:auto,44px 44px,44px 44px;
+      opacity:.42;
+    }
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+
+    :root{
+      --bg:#fffdf7;
+      --ink:#101010;
+      --muted:#625e58;
+      --line:rgba(16,16,16,.09);
+      --card:#ffffff;
+      --blue:#1f5fb7;
+      --yellow:#ffd422;
+      --blue-soft:#dbe8ff;
+      --yellow-soft:#fff2ae;
+      --max:1240px;
+    }
+
+    .container{max-width:var(--max);margin:0 auto;padding:0 24px}
+    .display{
+      font-family:'Space Grotesk','Inter',sans-serif;
+      font-weight:700;
+      letter-spacing:-.055em;
+      line-height:.93;
+    }
+
+    .nav{
+      position:sticky;top:0;z-index:40;background:transparent;
+    }
+    .nav-inner{
+      min-height:72px;margin-top:18px;padding:10px 12px 10px 10px;
+      display:flex;align-items:center;justify-content:space-between;gap:20px;
+      border-radius:26px;background:rgba(255,255,255,.72);
+      border:1px solid rgba(16,16,16,.06);
+      box-shadow:0 14px 40px rgba(16,16,16,.05);
+      backdrop-filter:saturate(180%) blur(18px);
+      -webkit-backdrop-filter:saturate(180%) blur(18px);
+    }
+    .brand{
+      display:inline-flex;align-items:center;gap:12px;padding:4px 10px 4px 4px;border-radius:18px;
+      font-family:'Space Grotesk',sans-serif;
+    }
+    .brand-mark{
+      width:44px;height:44px;border-radius:14px;overflow:hidden;
+      box-shadow:0 12px 28px rgba(31,95,183,.14);
+    }
+    .brand-copy{display:flex;flex-direction:column;gap:2px}
+    .brand-copy strong{font-size:14px;line-height:1;letter-spacing:-.03em}
+    .brand-copy span{font-size:10px;line-height:1;letter-spacing:.16em;text-transform:uppercase;color:#7b756f}
+    .nav-links{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+    .nav-links a{
+      position:relative;padding:12px 14px;border-radius:999px;border:1px solid transparent;
+      font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#6d6862;
+    }
+    .nav-links a::after{
+      content:"";position:absolute;left:16px;right:16px;bottom:9px;height:1.5px;background:#101010;
+      transform:scaleX(0);transform-origin:right;transition:transform .22s ease;
+    }
+    .nav-links a:hover{color:var(--ink);background:rgba(255,255,255,.56)}
+    .nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+
+    .hero{
+      position:relative;padding:82px 0 104px;overflow:hidden;
+      background:var(--bg);
+    }
+    .hero-grid{
+      position:relative;z-index:1;display:grid;grid-template-columns:1fr .94fr;gap:34px;align-items:center;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;
+      border:1px solid var(--line);background:rgba(255,255,255,.88);
+      font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#5a5854;
+    }
+    .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--blue)}
+    .hero h1{margin-top:22px;font-size:clamp(52px,9vw,112px);max-width:10ch}
+    .hero h1 .accent{color:var(--blue)}
+    .hero p.lead{
+      margin-top:24px;max-width:670px;color:#4f4c48;font-size:clamp(17px,1.65vw,20px);line-height:1.72;
+    }
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 22px;
+      border-radius:999px;font-size:14px;font-weight:700;letter-spacing:.02em;
+      transition:transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease;
+    }
+    .btn-primary{
+      background:linear-gradient(180deg,#1f66c7 0%, #1f5fb7 100%);color:#fff;box-shadow:0 16px 34px rgba(31,95,183,.22);
+    }
+    .btn-secondary{
+      background:#fff;color:var(--ink);border:1px solid var(--line);
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .hero-meta{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px}
+    .hero-meta span{
+      padding:11px 14px;border-radius:999px;background:rgba(255,255,255,.78);border:1px solid var(--line);
+      font-size:12px;font-weight:700;color:#5e5a56;
+    }
+
+    .hero-stage{
+      position:relative;min-height:690px;padding:24px 12px 24px 24px;
+    }
+    .hero-panel{
+      position:absolute;left:28px;top:72px;z-index:3;width:230px;padding:18px;border-radius:24px;
+      background:linear-gradient(180deg,#225fbc 0%, #184f9d 100%);color:#fff;box-shadow:0 22px 60px rgba(31,95,183,.18);
+    }
+    .hero-panel small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+    .hero-panel strong{display:block;margin-top:10px;font-family:'Space Grotesk',sans-serif;font-size:34px;line-height:.94;letter-spacing:-.05em}
+    .hero-panel p{margin-top:10px;font-size:13px;line-height:1.55;color:rgba(255,255,255,.78)}
+    .phone{
+      position:absolute;right:18px;top:0;z-index:2;width:min(360px,100% - 30px);padding:12px;border-radius:44px;
+      background:linear-gradient(160deg,#171717,#030303);transform:rotate(7deg);
+    }
+    .phone-notch{
+      position:absolute;top:14px;left:50%;transform:translateX(-50%);
+      width:112px;height:28px;border-radius:999px;background:#000;z-index:2;
+    }
+    .phone-screen{border-radius:34px;overflow:hidden;background:#fff}
+    .phone-screen img{width:100%;height:auto;display:block}
+    .floating-card{
+      position:absolute;left:20px;bottom:44px;z-index:3;width:252px;padding:18px;border-radius:24px;
+      background:#fff;border:1px solid var(--line);box-shadow:0 24px 60px rgba(16,16,16,.10);
+    }
+    .floating-card .label{
+      font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#76716b;
+    }
+    .floating-card .value{
+      margin-top:12px;font-family:'Space Grotesk',sans-serif;font-size:36px;line-height:.95;letter-spacing:-.055em;
+    }
+    .floating-card .sub{margin-top:10px;color:#5a5652;font-size:13px;line-height:1.55}
+
+    section{padding:108px 0}
+    @media (max-width:760px){section{padding:76px 0}}
+    .section-head{max-width:760px;margin-bottom:56px}
+    .section-eyebrow{
+      font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#78736e;margin-bottom:14px;
+    }
+    .section-title{font-size:clamp(34px,5vw,68px)}
+    .section-sub{margin-top:18px;color:#57534f;font-size:clamp(15px,1.4vw,18px);max-width:660px;line-height:1.72}
+
+    .systems-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+    .system-card,.feature-card,.download{
+      border:1px solid var(--line);background:#fff;border-radius:30px;box-shadow:0 24px 70px rgba(16,16,16,.08);
+    }
+    .system-card{
+      position:relative;overflow:hidden;padding:0;min-height:300px;background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.99));
+      box-shadow:0 22px 60px rgba(16,16,16,.06), inset 0 1px 0 rgba(255,255,255,.9);
+      transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+    .system-card::after{
+      content:"";position:absolute;left:0;top:0;bottom:0;width:5px;pointer-events:none;
+      background:linear-gradient(180deg, var(--blue) 0%, var(--yellow) 100%);
+    }
+    .system-card:hover{transform:translateY(-3px);box-shadow:0 28px 70px rgba(16,16,16,.09)}
+    .system-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px 0 28px}
+    .system-num{
+      font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1;color:var(--blue);letter-spacing:.16em;text-transform:uppercase;
+    }
+    .system-tag{
+      min-height:28px;padding:0 10px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;
+      background:#111;color:#fff;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    }
+    .system-card h3{
+      margin-top:22px;padding:0 28px;font-family:'Space Grotesk',sans-serif;font-size:38px;line-height:.98;letter-spacing:-.06em;
+    }
+    .system-card small{
+      display:block;margin-top:10px;padding:0 28px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#8b847d;
+    }
+    .system-card p{
+      margin-top:16px;padding:0 28px;color:#595651;font-size:14px;line-height:1.78;
+    }
+    .system-bottom{
+      position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:18px 22px 18px 28px;border-top:1px solid rgba(16,16,16,.06);
+      background:linear-gradient(180deg, rgba(255,255,255,.1), rgba(250,247,241,.86));
+    }
+    .system-code{
+      font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8d867f;
+    }
+    .system-metric{
+      font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:-.02em;color:#111;
+    }
+
+    .features-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .feature-card{padding:24px;background:linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.98))}
+    .feature-card span{
+      display:inline-flex;padding:8px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.86);
+      font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#77716a;
+    }
+    .feature-card h3{
+      margin-top:18px;font-family:'Space Grotesk',sans-serif;font-size:30px;line-height:1;letter-spacing:-.05em;
+    }
+    .feature-card p{
+      margin-top:16px;color:#5b5752;font-size:14px;line-height:1.75;
+    }
+
+    .download{
+      padding:34px;background:
+        radial-gradient(circle at top left, rgba(255,212,34,.18), transparent 30%),
+        linear-gradient(160deg, rgba(255,255,255,.78), rgba(248,251,255,.98));
+    }
+    .download-row{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+    .download h3{
+      margin-top:10px;font-family:'Space Grotesk',sans-serif;font-size:clamp(34px,5vw,72px);line-height:.95;letter-spacing:-.05em;
+    }
+    .download p{margin-top:16px;max-width:560px;color:#57534f;font-size:16px;line-height:1.72}
+
+    footer{
+      padding:34px 0 44px;border-top:1px solid var(--line);background:rgba(255,255,255,.48);
+    }
+    .foot-top,.foot-bottom{
+      display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+    }
+    .foot-links{display:flex;gap:10px;flex-wrap:wrap}
+    .foot-links a{
+      padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.78);
+      font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#66615d;
+    }
+    .foot-links a:hover{color:#101010;border-color:#101010}
+    .foot-bottom{
+      margin-top:20px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#736e69;
+    }
+
+    @media (max-width:1080px){
+      .hero-grid,.systems-grid,.features-grid{grid-template-columns:1fr 1fr}
+      .hero-grid{grid-template-columns:1fr}
+      .hero-stage{min-height:620px}
+    }
+    @media (max-width:760px){
+      .nav{position:static}
+      .nav-inner{flex-direction:column;align-items:flex-start;padding:12px 12px 14px;margin-top:12px}
+      .nav-links{width:100%;gap:6px}
+      .nav-links a{padding:10px 12px}
+      .hero{padding:56px 0 74px}
+      .hero-stage{min-height:520px;padding:20px}
+      .hero-panel{position:relative;left:auto;top:auto;width:100%;margin-bottom:18px}
+      .phone{right:18px;top:120px;width:min(270px,100% - 36px)}
+      .floating-card{left:18px;right:18px;width:auto;bottom:18px}
+      .systems-grid,.features-grid{grid-template-columns:1fr}
+      .system-card{min-height:280px}
+    }
+  </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="shell topbar-inner">
-      <a class="brand" href="./index.html" aria-label="Sakli Kelime home page">
-        <span class="brand-sakli">SAKLI</span>
-        <span class="brand-kelime">KELIME</span>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="/" class="brand" aria-label="Back to CIOFLEXLABS">
+        <img class="brand-mark" src="../assets/sakli-kelime-logo.png" alt="Sakli Kelime logo">
+        <span class="brand-copy">
+          <strong>SAKLI KELIME</strong>
+          <span>competitive word game</span>
+        </span>
       </a>
-      <nav class="nav">
-        <a class="active" href="./index.html">Landing</a>
-        <a href="./support.html">Support</a>
-        <a href="./privacy.html">Privacy</a>
-        <a href="./account-deletion.html">Account Deletion</a>
-        <a href="./terms.html">Terms</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#systems">Systems</a>
+        <a href="#features">Features</a>
+        <a href="#download">Download</a>
       </nav>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="shell hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow">Daily Word Game and Duels</span>
-          <h1>A word game that feels better with competition.</h1>
-          <p>
-            Sakli Kelime is a fast mobile word game that combines a daily five-letter challenge,
-            display names, friends, duel invites, and leaderboard competition in one place.
-          </p>
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> Turkish Word Game</span>
+          <h1 class="display">GUESS. <span class="accent">DUEL.</span> CLIMB.</h1>
+          <p class="lead">Guess the daily Turkish word, enter duels, climb the world leaderboard, collect rewards, and build your streak inside a competitive word game designed for fast daily play.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="./support.html">Support Page</a>
-            <a class="button button-secondary" href="./privacy.html">Privacy Policy</a>
-            <a class="button button-ghost" href="./account-deletion.html">Delete Account</a>
+            <a class="btn btn-primary" href="./support.html">Support</a>
+            <a class="btn btn-secondary" href="./privacy.html">Privacy</a>
+          </div>
+          <div class="hero-meta">
+            <span>Daily word challenge</span>
+            <span>Live duels</span>
+            <span>Leaderboard climb</span>
+            <span>Archive, rewards, and store</span>
           </div>
         </div>
 
-        <aside class="hero-card">
-          <div class="hero-stack">
-            <div class="word-row">
-              <div class="tile tile-pink">S</div>
-              <div class="tile tile-paper">A</div>
-              <div class="tile tile-yellow">K</div>
-              <div class="tile tile-paper">L</div>
-              <div class="tile tile-blue">I</div>
-            </div>
-            <div class="word-row">
-              <div class="tile tile-paper">D</div>
-              <div class="tile tile-blue">U</div>
-              <div class="tile tile-paper">E</div>
-              <div class="tile tile-pink">L</div>
-              <div class="tile tile-yellow">O</div>
-            </div>
-            <div class="word-row">
-              <div class="tile tile-yellow">S</div>
-              <div class="tile tile-paper">K</div>
-              <div class="tile tile-blue">O</div>
-              <div class="tile tile-paper">R</div>
-              <div class="tile tile-pink">!</div>
+        <div class="hero-stage">
+          <div class="hero-panel">
+            <small>Daily Format</small>
+            <strong>6 tries</strong>
+            <p>One word every day, one clean loop, and just enough pressure to make each guess matter.</p>
+          </div>
+          <div class="phone" aria-label="Sakli Kelime app preview">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <img src="../assets/sakli-kelime-screen.png" alt="Sakli Kelime app screen">
             </div>
           </div>
-        </aside>
+          <div class="floating-card">
+            <div class="label">Core Loop</div>
+            <div class="value">Guess. Duel. Repeat.</div>
+            <div class="sub">A word game that gets sharper when competition enters the loop. Daily challenge, direct rivalry, and visible progression.</div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="shell section-grid">
-        <article class="info-card">
-          <span class="card-tag tag-blue">Support</span>
-          <h2>A help center for players</h2>
-          <p>One place for sign-in, duel invites, display names, leaderboard questions, and general gameplay help.</p>
-        </article>
-        <article class="info-card">
-          <span class="card-tag tag-pink">Privacy</span>
-          <h2>Data use explained clearly</h2>
-          <p>What may be stored, why it is used, and which rights users have are explained in plain language.</p>
-        </article>
-        <article class="info-card">
-          <span class="card-tag tag-yellow">Account</span>
-          <h2>A dedicated account deletion flow</h2>
-          <p>The required information and the types of data that may be deleted are listed on a separate page.</p>
-        </article>
+    <section id="systems">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-eyebrow">Core Systems</div>
+          <h2 class="section-title display">A word game with pressure and momentum.</h2>
+          <p class="section-sub">Sakli Kelime is not just a daily puzzle. It is a compact competitive system built around daily play, duels, progression, and world ranking.</p>
+        </div>
+
+        <div class="systems-grid">
+          <article class="system-card">
+            <div class="system-top"><div class="system-num">Module 01</div><div class="system-tag">Daily</div></div>
+            <h3>Daily Word</h3>
+          <small>daily challenge</small>
+          <p>Each day opens with a shared Turkish word challenge built for quick sessions and repeatable daily return.</p>
+          <div class="system-bottom"><span class="system-code">daily loop</span><span class="system-metric">every day</span></div>
+          </article>
+          <article class="system-card">
+            <div class="system-top"><div class="system-num">Module 02</div><div class="system-tag">PVP</div></div>
+            <h3>Duels</h3>
+            <small>head-to-head mode</small>
+          <p>Enter duels, answer under pressure, and turn a solo word puzzle into a visible head-to-head rivalry.</p>
+            <div class="system-bottom"><span class="system-code">duel flow</span><span class="system-metric">head-to-head</span></div>
+          </article>
+          <article class="system-card">
+            <div class="system-top"><div class="system-num">Module 03</div><div class="system-tag">Rank</div></div>
+            <h3>Leaderboard</h3>
+          <small>world ranking</small>
+          <p>Rise through the global leaderboard and turn consistency, speed, and accuracy into visible status.</p>
+            <div class="system-bottom"><span class="system-code">rank layer</span><span class="system-metric">status climb</span></div>
+          </article>
+          <article class="system-card">
+            <div class="system-top"><div class="system-num">Module 04</div><div class="system-tag">Rules</div></div>
+            <h3>Modes</h3>
+          <small>difficulty layer</small>
+          <p>Hard mode and tighter guess rules add more pressure for players who want a stricter daily solve.</p>
+            <div class="system-bottom"><span class="system-code">rule set</span><span class="system-metric">hard mode</span></div>
+          </article>
+          <article class="system-card">
+            <div class="system-top"><div class="system-num">Module 05</div><div class="system-tag">Skill</div></div>
+          <h3>Archive & Rewards</h3>
+          <small>retention</small>
+          <p>Track past words in the archive, collect daily rewards, and keep momentum going through repeat play.</p>
+          <div class="system-bottom"><span class="system-code">retention layer</span><span class="system-metric">history + rewards</span></div>
+          </article>
+          <article class="system-card">
+            <div class="system-top"><div class="system-num">Module 06</div><div class="system-tag">Identity</div></div>
+            <h3>Profile</h3>
+          <small>progression</small>
+          <p>Profiles, achievements, coins, store items, color-blind mode, and hard mode turn the game into a longer-term player system.</p>
+          <div class="system-bottom"><span class="system-code">player card</span><span class="system-metric">progression</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-eyebrow">Why It Works</div>
+          <h2 class="section-title display">Short sessions, sharp tension.</h2>
+          <p class="section-sub">The app stays fast and readable, but adds enough progression and social pressure to make every result matter beyond a single round.</p>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <span>Clarity</span>
+            <h3>One clean daily loop</h3>
+            <p>The game remains easy to understand at first glance: open the app, solve the word, and see where you stand.</p>
+          </article>
+          <article class="feature-card">
+            <span>Pressure</span>
+            <h3>Duels change the energy</h3>
+            <p>Direct rivalry and global ranking make the word loop feel more urgent and more memorable.</p>
+          </article>
+          <article class="feature-card">
+            <span>Progression</span>
+            <h3>More than one screen</h3>
+            <p>Archive, achievements, daily rewards, store items, and accessibility settings give the app more depth than a simple word puzzle.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="download">
+      <div class="container">
+        <div class="download">
+          <div class="download-row">
+            <div>
+              <div class="section-eyebrow">Player Access</div>
+              <h3>Start the next word.</h3>
+              <p>Support, privacy, terms, and account pages are already available. The game itself combines daily play, duels, ranking, archive history, rewards, and progression in one compact loop.</p>
+            </div>
+            <a class="btn btn-primary" href="./support.html">Support</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="shell">
-      <div class="footer-line"></div>
-      <div>© 2026 Sakli Kelime.</div>
+  <footer>
+    <div class="container">
+      <div class="foot-top">
+        <div class="foot-links">
+          <a href="./support.html">Support</a>
+          <a href="./privacy.html">Privacy</a>
+          <a href="./account-deletion.html">Account Deletion</a>
+          <a href="./terms.html">Terms</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>SAKLI KELIME · 2026 © CIOFLEXLABS</span>
+        <span>Competitive Word Game</span>
+      </div>
     </div>
   </footer>
 </body>
