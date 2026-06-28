@@ -1,159 +1,130 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Momentoid Support</title>
-  <style>
-    :root {
-      --bg: #faf5f2;
-      --paper: rgba(255,255,255,0.64);
-      --ink: #1a1a1a;
-      --muted: #6a6661;
-      --line: rgba(26,26,26,0.08);
-      --accent: #bd1a1a;
-      --shadow: 0 18px 50px rgba(31, 21, 18, 0.08);
-      --radius: 28px;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at bottom left, rgba(189,26,26,0.08), transparent 28%),
-        var(--bg);
-      font-family: Georgia, "Times New Roman", serif;
-    }
-    a { color: inherit; text-decoration: none; }
-    .page { width: min(980px, calc(100% - 32px)); margin: 0 auto; padding: 20px 0 56px; }
-    .nav, footer { display: flex; justify-content: space-between; gap: 16px; align-items: center; flex-wrap: wrap; }
-    .nav { padding: 16px 0 24px; }
-    .brand { font-size: 1.45rem; font-weight: 700; letter-spacing: -0.03em; }
-    .nav-links, .footer-links { display: flex; flex-wrap: wrap; gap: 10px; }
-    .nav-links a, .footer-links a {
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.45);
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-    .hero, .grid article {
-      background: var(--paper);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255,255,255,0.55);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius);
-    }
-    .hero { padding: 28px; }
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 12px;
-      font-family: "Courier New", monospace;
-      font-size: 0.78rem;
-      letter-spacing: 0.22em;
-      color: var(--accent);
-    }
-    h1 { margin: 0; font-size: clamp(2.2rem, 6vw, 4rem); line-height: 0.95; letter-spacing: -0.05em; }
-    .intro { color: var(--muted); font-size: 1rem; line-height: 1.75; max-width: 58ch; margin-top: 16px; }
-    .grid {
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-    .grid article { padding: 24px; }
-    .grid h2 { margin: 0 0 10px; font-size: 1.2rem; letter-spacing: -0.03em; }
-    .grid p, .grid li { color: var(--muted); line-height: 1.75; }
-    ul { margin: 0; padding-left: 18px; }
-    .contact {
-      display: inline-flex;
-      margin-top: 10px;
-      padding: 12px 16px;
-      border-radius: 999px;
-      background: #1a1a1a;
-      color: #faf5f2;
-    }
-    .email-link {
-      color: var(--accent);
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-    }
-    footer { margin-top: 20px; }
-    .footnote { color: var(--muted); font-size: 0.92rem; }
-    @media (max-width: 700px) {
-      .grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 640px) {
-      .page { width: min(100% - 20px, 980px); }
-      .hero, .grid article { padding: 22px; }
-      .nav { flex-direction: column; align-items: flex-start; }
-      .nav-links, .footer-links { width: 100%; }
-      .nav-links a, .footer-links a { flex: 1 1 auto; text-align: center; }
-      .contact { width: 100%; justify-content: center; }
-    }
-  </style>
+  <meta name="description" content="Support for Momentoid, a polaroid-style photo memory journal app." />
+  <link rel="icon" href="assets/momentoid-app-icon.png" />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <div class="page">
-    <nav class="nav">
-      <a class="brand" href="./index.html">Momentoid</a>
+  <div class="legal-layout">
+    <nav class="nav light" aria-label="Primary navigation">
+      <a class="brand dark" href="./index.html" aria-label="Momentoid home">
+        <img src="assets/momentoid-app-icon.png" alt="" />
+        <span>Momentoid</span>
+      </a>
       <div class="nav-links">
-        <a href="./index.html">Landing</a>
+        <a href="./index.html">Home</a>
         <a href="./privacy.html">Privacy</a>
         <a href="./terms.html">Terms</a>
+        <a href="./support.html">Support</a>
+        <a href="mailto:cioflexdev@gmail.com">Contact</a>
       </div>
     </nav>
 
-    <main>
-      <section class="hero">
-        <span class="eyebrow">SUPPORT</span>
-        <h1>Need help?</h1>
-        <p class="intro">Use this page for setup questions, photo saving issues, premium access problems, sharing flow issues, or privacy-related requests. We aim to keep support clear and practical.</p>
-        <a class="contact" href="mailto:cioflexdev@gmail.com">cioflexdev@gmail.com</a>
-      </section>
+    <div class="legal-wrap">
+      <header class="legal-hero">
+        <div class="legal-heading">
+          <span class="eyebrow">Support</span>
+          <h1 class="legal-title">Support for Momentoid.</h1>
+        </div>
+        <aside class="legal-summary" aria-label="Support summary">
+          <p class="legal-intro">
+            Need help with your photo journal, purchases, permissions, privacy questions, or a bug report? Send a clear note and we will help you get back to keeping memories.
+          </p>
+          <div class="meta-line">
+            <span>Support email: cioflexdev@gmail.com</span>
+            <span>Typical reply: a few business days</span>
+          </div>
+          <a class="support-cta" href="mailto:cioflexdev@gmail.com">Email Support</a>
+        </aside>
+      </header>
 
-      <section class="grid">
-        <article>
-          <h2>Before sending a request</h2>
-          <ul>
-            <li>Note your device model and iOS version.</li>
-            <li>Capture the relevant screen and error message if possible.</li>
-            <li>Write down the exact steps that lead to the issue.</li>
-          </ul>
-        </article>
+      <main class="legal-card">
+        <section class="legal-section">
+          <h2>How we can help</h2>
+          <div class="support-card-grid">
+            <article class="support-card">
+              <span>Purchases</span>
+              <h3>Purchases & Subscriptions</h3>
+              <p>For missing premium access, failed restores, subscription questions, or upgrade issues, include the App Store account region and the approximate purchase date if available.</p>
+            </article>
+            <article class="support-card">
+              <span>Photos</span>
+              <h3>Photo Capture & Saving</h3>
+              <p>For camera, import, filter, save, or sharing issues, include your iPhone model, iOS version, and the steps that reproduce the problem.</p>
+            </article>
+            <article class="support-card">
+              <span>Privacy</span>
+              <h3>Privacy & Data</h3>
+              <p>Momentoid is designed around local photo memories. You can contact us about privacy questions, data requests, or account removal requests.</p>
+            </article>
+            <article class="support-card">
+              <span>Reports</span>
+              <h3>Bug Reports</h3>
+              <p>Screenshots, screen recordings, and exact steps help us understand the issue faster. Please avoid sending sensitive personal photos unless necessary.</p>
+            </article>
+          </div>
+        </section>
 
-        <article>
-          <h2>Support topics</h2>
-          <ul>
-            <li>The app does not open or crashes unexpectedly.</li>
-            <li>Photo capture or saving to the library does not work.</li>
-            <li>A premium purchase is missing or cannot be restored.</li>
-            <li>Notifications, sharing, or filter behavior is not working as expected.</li>
-          </ul>
-        </article>
+        <section class="legal-section">
+          <h2>Purchases and subscriptions</h2>
+          <div>
+            <p>Premium features are handled through Apple in-app purchases and RevenueCat purchase infrastructure. If premium access is missing, open Momentoid, go to the Settings screen, and use <strong>Restore Purchases</strong>.</p>
+            <p>To manage, cancel, upgrade, or review your subscription, open the Settings screen and choose <strong>Subscriptions & Upgrades</strong>. That opens Apple's subscription management page.</p>
+          </div>
+        </section>
 
-        <article>
-          <h2>Privacy and account requests</h2>
-          <p>You can use the same support address for data deletion requests, account removal requests, privacy questions, or other concerns related to how app data is handled. Include the relevant email address or account details to help speed up the process. Contact: <a class="email-link" href="mailto:cioflexdev@gmail.com">cioflexdev@gmail.com</a>.</p>
-        </article>
+        <section class="legal-section">
+          <h2>Photos and permissions</h2>
+          <div>
+            <p>Photos you capture or import are stored locally on your device for the app features you choose. Momentoid does not upload your photo journal memories to our servers.</p>
+            <p>Camera, photo library, and notification permissions are requested only when the related feature is used. On iOS, selecting a photo from the system photo picker may not require a full photo library permission prompt because the app receives only the photo you choose.</p>
+          </div>
+        </section>
 
-        <article>
-          <h2>Response time</h2>
-          <p>Most support messages receive a reply within a few business days. Response times may be longer during review periods, technical incidents, or public holidays.</p>
-        </article>
-      </section>
-    </main>
+        <section class="legal-section">
+          <h2>Quick answers</h2>
+          <div class="faq-list">
+            <article>
+              <h3>How do I restore purchases?</h3>
+              <p>Open Momentoid, go to Settings, and tap Restore Purchases.</p>
+            </article>
+            <article>
+              <h3>How do I manage or cancel subscriptions?</h3>
+              <p>Open Settings in Momentoid and tap Subscriptions & Upgrades to open Apple's subscription management page.</p>
+            </article>
+            <article>
+              <h3>Are my photos uploaded?</h3>
+              <p>No. Your photo memories are designed to stay on your device unless you choose to share or save them through system features.</p>
+            </article>
+            <article>
+              <h3>Why does the photo picker not ask permission?</h3>
+              <p>iOS can let you choose a specific photo without giving the app access to your full library. This is expected privacy-friendly behavior.</p>
+            </article>
+          </div>
+        </section>
 
-    <footer>
-      <div class="footnote">Support links and legal pages. Contact: <a class="email-link" href="mailto:cioflexdev@gmail.com">cioflexdev@gmail.com</a></div>
-      <div class="footer-links">
-        <a href="./privacy.html">Privacy</a>
-        <a href="./terms.html">Terms</a>
-        <a href="./index.html">Landing</a>
-      </div>
-    </footer>
+        <section class="legal-section">
+          <h2>Contact</h2>
+          <div>
+            <p>Email <a class="email-link" href="mailto:cioflexdev@gmail.com">cioflexdev@gmail.com</a> for support, App Store review questions, privacy requests, purchase issues, or bug reports. Most messages receive a reply within a few business days.</p>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <span>&copy; 2026 Momentoid. Support information.</span>
+        <div class="footer-links">
+          <a href="./privacy.html">Privacy Policy</a>
+          <a href="./terms.html">Terms of Use</a>
+          <a href="./support.html">Support</a>
+          <a href="mailto:cioflexdev@gmail.com">Email Support</a>
+        </div>
+      </footer>
+    </div>
   </div>
 </body>
 </html>
