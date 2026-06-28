@@ -2,132 +2,614 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>cioflexlabs — One-Person App Studio</title>
-<meta name="description" content="Premium digital products designed and developed by an independent maker." />
-<meta property="og:title" content="cioflexlabs — One-Person App Studio" />
-<meta property="og:description" content="Premium digital products designed and developed by an independent maker." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://cioflexlabs.com/" />
-<meta property="og:image" content="https://cioflexlabs.com/assets/og-studio.png" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://cioflexlabs.com/assets/og-studio.png" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>CIOFLEXLABS - Building What's Next in Mobile Apps</title>
+<meta name="description" content="Cioflex Labs is an independent mobile app studio building simple, useful and beautifully designed mobile apps." />
+<meta name="theme-color" content="#0a0a0a" />
 <link rel="canonical" href="https://cioflexlabs.com/" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Fraunces', 'Georgia', 'serif'],
-      },
-      colors: {
-        background: 'oklch(0.13 0.012 60)',
-        foreground: 'oklch(0.95 0.02 80)',
-        muted: { DEFAULT: 'oklch(0.20 0.012 60)', foreground: 'oklch(0.65 0.02 70)' },
-        border: 'oklch(0.28 0.014 60)',
-        card: { DEFAULT: 'oklch(0.16 0.014 55)', foreground: 'oklch(0.95 0.02 80)' },
-        accent: 'oklch(0.68 0.22 35)',
-      },
-    }
-  }
-}
-</script>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Cioflex Labs - Building What's Next in Mobile Apps" />
+<meta property="og:description" content="An independent mobile app studio crafting simple, useful and beautifully designed apps." />
+<meta property="og:url" content="https://cioflexlabs.com/" />
+<meta property="og:site_name" content="Cioflex Labs" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Cioflex Labs - Building What's Next in Mobile Apps" />
+<meta name="twitter:description" content="An independent mobile app studio crafting simple, useful and beautifully designed apps." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
 <style>
-  :root {
-    --accent: oklch(0.68 0.22 35);
-    --accent-soft: oklch(0.80 0.17 55);
-    --gradient-accent: linear-gradient(135deg, oklch(0.82 0.17 60), oklch(0.60 0.24 28));
-    --surface: oklch(0.13 0.012 60);
-    --surface-2: oklch(0.16 0.014 55);
-    --cream: oklch(0.95 0.02 80);
-    --border: oklch(0.28 0.014 60 / 0.6);
-    --muted-fg: oklch(0.65 0.02 70);
-  }
-  body { background: var(--surface); color: var(--cream); font-family: 'Inter', system-ui, sans-serif; }
-  .font-display { font-family: 'Fraunces', Georgia, serif; }
-  .grain {
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-    mix-blend-mode: overlay; opacity: .07;
-  }
-  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  .ticker { animation: ticker 36s linear infinite; }
-  .btn-accent { background: var(--gradient-accent); color: #000; box-shadow: 0 0 80px -10px oklch(0.68 0.22 35 / 0.5); }
-  .btn-ghost { border: 1px solid var(--border); }
-  .btn-ghost:hover { background: oklch(0.16 0.014 55 / 0.6); border-color: oklch(0.68 0.22 35 / 0.5); }
-  a.acc:hover { color: var(--cream); }
+/* ---------- Reset & base ---------- */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  background:#fafafa;
+  color:#0a0a0a;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+
+:root{
+  --bg:#fafafa;
+  --ink:#0a0a0a;
+  --ink-2:#1a1a1a;
+  --muted:#6b6b6b;
+  --line:rgba(0,0,0,.08);
+  --card:#ffffff;
+  --radius:28px;
+  --max:1240px;
+}
+
+.container{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* ---------- Display typography ---------- */
+.display{
+  font-family:'Space Grotesk','Inter',sans-serif;
+  font-weight:700;
+  letter-spacing:-0.035em;
+  line-height:.98;
+}
+
+/* ---------- Navbar ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  background:rgba(250,250,250,.72);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s ease, background .3s ease;
+}
+.nav.scrolled{border-bottom-color:var(--line);background:rgba(250,250,250,.88)}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  height:68px;
+}
+.brand{
+  display:flex;align-items:center;gap:10px;font-weight:700;
+  font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em;font-size:18px;
+}
+.brand-mark{
+  width:30px;height:30px;display:block;flex:0 0 auto;
+}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:14.5px;color:#222;font-weight:500;position:relative}
+.nav-links a:hover{color:#000}
+.nav-links a::after{
+  content:"";position:absolute;left:0;right:0;bottom:-6px;height:1.5px;
+  background:#0a0a0a;transform:scaleX(0);transform-origin:right;
+  transition:transform .35s cubic-bezier(.7,0,.2,1);
+}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav-cta{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:10px 16px;border-radius:999px;background:#0a0a0a;color:#fff;
+  font-size:13.5px;font-weight:600;transition:transform .25s ease, background .25s;
+}
+.nav-cta:hover{background:#1f1f1f;transform:translateY(-1px)}
+.menu-btn{display:none;width:40px;height:40px;border-radius:10px;align-items:center;justify-content:center}
+.menu-btn span{display:block;width:18px;height:1.6px;background:#0a0a0a;position:relative}
+.menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0;right:0;height:1.6px;background:#0a0a0a}
+.menu-btn span::before{top:-6px}.menu-btn span::after{top:6px}
+
+@media (max-width:760px){
+  .nav-links,.nav-cta{display:none}
+  .menu-btn{display:inline-flex}
+  .mobile-menu.open{display:flex}
+}
+.mobile-menu{
+  display:none;flex-direction:column;gap:18px;padding:18px 24px 28px;
+  background:#fafafa;border-bottom:1px solid var(--line);
+}
+.mobile-menu a{font-size:18px;font-weight:600}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;padding:90px 0 110px;overflow:hidden;
+  background:
+    radial-gradient(1100px 600px at 80% -10%, rgba(120,120,255,.10), transparent 60%),
+    radial-gradient(900px 500px at 0% 10%, rgba(255,160,120,.10), transparent 60%),
+    var(--bg);
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 13px;border:1px solid var(--line);border-radius:999px;
+  background:#fff;font-size:12.5px;color:#444;font-weight:500;
+}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.15)}
+.hero h1{
+  margin-top:26px;
+  font-size:clamp(44px,8vw,112px);
+}
+.hero h1 .accent{
+  background:linear-gradient(180deg,#0a0a0a 0%,#0a0a0a 55%, #8a8a8a 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p.lead{
+  margin-top:28px;max-width:620px;font-size:clamp(16px,1.6vw,19px);
+  color:#3a3a3a;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 22px;border-radius:999px;font-size:15px;font-weight:600;
+  transition:transform .25s ease, background .25s, box-shadow .25s;
+  white-space:nowrap;
+}
+.btn-primary{background:#0a0a0a;color:#fff;box-shadow:0 10px 30px -10px rgba(0,0,0,.4)}
+.btn-primary:hover{background:#1f1f1f;transform:translateY(-2px)}
+.btn-ghost{background:#fff;color:#0a0a0a;border:1px solid var(--line)}
+.btn-ghost:hover{border-color:#0a0a0a;transform:translateY(-2px)}
+.btn svg{width:16px;height:16px}
+
+@media (max-width:760px){
+  .hero{padding:60px 0 70px}
+}
+
+/* ---------- Section base ---------- */
+section{padding:120px 0;position:relative}
+@media (max-width:760px){section{padding:80px 0}}
+
+.section-head{max-width:780px;margin-bottom:64px}
+.section-eyebrow{
+  font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:#888;margin-bottom:18px;
+}
+.section-title{
+  font-size:clamp(32px,5vw,64px);
+}
+.section-sub{margin-top:20px;color:#555;font-size:clamp(15px,1.4vw,18px);max-width:620px}
+
+/* ---------- Purpose strip ---------- */
+.purpose{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.purpose-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:48px;
+}
+@media (max-width:880px){.purpose-grid{grid-template-columns:1fr;gap:32px}}
+.purpose-item h3{font-family:'Space Grotesk',sans-serif;font-size:22px;letter-spacing:-.02em;margin-bottom:10px}
+.purpose-item p{color:#555;font-size:15.5px}
+.purpose-num{
+  font-family:'Space Grotesk',sans-serif;font-size:14px;color:#999;
+  display:inline-block;margin-bottom:18px;letter-spacing:.1em;
+}
+
+/* ---------- Apps ---------- */
+.apps-wrap{display:flex;flex-direction:column;gap:32px}
+.app-card{
+  position:relative;overflow:hidden;border-radius:var(--radius);
+  background:var(--card);border:1px solid var(--line);
+  display:grid;grid-template-columns:1.1fr .9fr;
+  min-height:540px;
+  transition:transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s;
+}
+.app-card:hover{transform:translateY(-4px);box-shadow:0 30px 80px -40px rgba(0,0,0,.25)}
+.app-card .content{padding:56px;display:flex;flex-direction:column;justify-content:space-between;gap:32px}
+.app-card .visual{
+  position:relative;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.app-card .visual::before{
+  content:"";position:absolute;inset:0;
+  background:var(--grad,linear-gradient(160deg,#0a0a0a,#333));
+  opacity:1;
+}
+.app-icon{
+  width:84px;height:84px;border-radius:22px;
+  background:var(--grad,linear-gradient(160deg,#0a0a0a,#333));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;
+  box-shadow:0 14px 30px -10px rgba(0,0,0,.3);
+  overflow:hidden;
+}
+.app-icon img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.app-cat{
+  display:inline-block;margin-top:22px;font-size:12.5px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:#888;
+}
+.app-name{
+  font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.025em;
+  font-size:clamp(34px,4vw,52px);margin-top:10px;line-height:1;
+}
+.app-desc{margin-top:18px;color:#444;font-size:17px;max-width:440px}
+.app-buttons{display:flex;flex-wrap:wrap;gap:10px}
+.store-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 18px;border-radius:14px;background:#0a0a0a;color:#fff;
+  font-size:13.5px;font-weight:600;transition:transform .25s, background .25s;
+}
+.store-btn:hover{background:#222;transform:translateY(-2px)}
+.store-btn.alt{background:#fff;color:#0a0a0a;border:1px solid var(--line)}
+.store-btn.alt:hover{border-color:#0a0a0a;background:#fafafa}
+.store-btn svg{width:18px;height:18px}
+
+/* phone mockup inside card */
+.phone{
+  position:relative;width:260px;height:520px;border-radius:48px;
+  background:linear-gradient(160deg,#111,#000);
+  padding:12px;
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.5), inset 0 0 0 1.5px rgba(255,255,255,.07);
+  transform:rotate(-6deg);
+  transition:transform .6s cubic-bezier(.2,.7,.2,1);
+}
+.app-card:hover .phone{transform:rotate(-3deg) translateY(-6px)}
+.phone .notch{
+  position:absolute;top:14px;left:50%;transform:translateX(-50%);
+  width:90px;height:22px;background:#000;border-radius:14px;z-index:2;
+}
+.phone .screen{
+  width:100%;height:100%;border-radius:38px;overflow:hidden;
+  background:var(--grad,linear-gradient(160deg,#222,#000));
+  display:flex;align-items:stretch;justify-content:stretch;color:#fff;
+  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:28px;
+  letter-spacing:-.02em;text-align:center;padding:0;
+}
+.phone .screen img{
+  width:100%;
+  height:100%;
+  object-fit:fill;
+  display:block;
+}
+
+/* alternate layout direction */
+.app-card:nth-child(even){grid-template-columns:.9fr 1.1fr}
+.app-card:nth-child(even) .visual{order:-1}
+.app-card:nth-child(even) .phone{transform:rotate(6deg)}
+.app-card:nth-child(even):hover .phone{transform:rotate(3deg) translateY(-6px)}
+
+@media (max-width:900px){
+  .app-card,.app-card:nth-child(even){grid-template-columns:1fr;min-height:auto}
+  .app-card .content{padding:40px 28px}
+  .app-card:nth-child(even) .visual{order:0}
+  .app-card .visual{height:360px}
+  .phone{width:200px;height:400px;border-radius:38px}
+  .phone .screen{border-radius:28px;font-size:22px}
+}
+
+/* ---------- About / split ---------- */
+.about{background:#0a0a0a;color:#fff}
+.about .section-eyebrow{color:#777}
+.about .section-title{color:#fff}
+.about .section-sub{color:#aaa}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:center}
+@media (max-width:900px){.about-grid{grid-template-columns:1fr;gap:48px}}
+.about-card{
+  border-radius:var(--radius);
+  background:linear-gradient(160deg,#1a1a1a,#0a0a0a);
+  border:1px solid rgba(255,255,255,.08);
+  padding:44px;
+}
+.about-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:24px}
+.stat .num{font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:700;letter-spacing:-.03em}
+.stat .lbl{color:#888;font-size:13px;margin-top:4px}
+
+/* ---------- Contact ---------- */
+.contact{
+  background:
+    radial-gradient(800px 400px at 50% 0%, rgba(0,0,0,.05), transparent 70%),
+    #fff;
+  text-align:center;border-top:1px solid var(--line);
+}
+.contact .section-head{margin:0 auto 40px}
+.contact-email{
+  display:inline-flex;align-items:center;gap:10px;margin-top:18px;
+  padding:18px 28px;border-radius:999px;border:1px solid var(--line);
+  font-family:'Space Grotesk',sans-serif;font-size:clamp(18px,2.4vw,28px);font-weight:600;
+  background:#fff;transition:transform .3s, border-color .3s;
+}
+.contact-email:hover{transform:translateY(-3px);border-color:#0a0a0a}
+
+/* ---------- Modal ---------- */
+.modal{
+  position:fixed;inset:0;display:none;align-items:center;justify-content:center;
+  padding:24px;background:rgba(10,10,10,.5);z-index:100;
+}
+.modal.open{display:flex}
+.modal-card{
+  width:min(100%,460px);padding:28px;border-radius:28px;background:#fff;
+  border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.18);position:relative;
+}
+.modal-card h3{
+  font-family:'Space Grotesk','Inter',sans-serif;font-size:30px;line-height:1;
+  letter-spacing:-.04em;margin-bottom:14px;
+}
+.modal-card p{color:#555;font-size:15.5px;line-height:1.7}
+.modal-close{
+  position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:999px;
+  border:1px solid var(--line);background:#fff;
+}
+.modal-actions{display:flex;justify-content:flex-start;margin-top:22px}
+
+/* ---------- Footer ---------- */
+footer{padding:40px 0;border-top:1px solid var(--line);background:#fafafa}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;color:#777;font-size:13.5px}
+
+/* ---------- Reveal animation ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal[data-delay="1"]{transition-delay:.08s}
+.reveal[data-delay="2"]{transition-delay:.16s}
+.reveal[data-delay="3"]{transition-delay:.24s}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
 </style>
 </head>
-<body class="antialiased">
+<body>
 
-<main class="relative flex min-h-[100svh] w-full flex-col overflow-x-hidden" style="background: var(--surface); background-image: radial-gradient(ellipse at top, oklch(0.20 0.04 70 / 0.5), transparent 60%)">
-<div aria-hidden class="grain pointer-events-none absolute inset-0"></div>
-<div aria-hidden class="pointer-events-none absolute -top-40 left-1/2 h-[420px] w-[900px] -translate-x-1/2 rounded-full blur-3xl sm:h-[600px] sm:w-[1100px]" style="background: radial-gradient(closest-side, oklch(0.85 0.13 75 / 0.18), transparent)"></div>
-
-<header class="relative z-20 flex shrink-0 items-center justify-between px-5 py-5 sm:px-8 sm:py-6 lg:px-10">
-  <span class="text-[13px] font-semibold tracking-[0.15em] sm:text-[15px]">cioflexlabs</span>
-  <a href="mailto:hello@cioflexlabs.com" class="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12px] font-medium backdrop-blur-md sm:gap-2 sm:px-4 sm:py-2 sm:text-[13px]" style="border: 1px solid var(--border); background: oklch(0.16 0.014 55 / 0.4)">Contact ↗</a>
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="brand" aria-label="Cioflex Labs home">
+      <svg class="brand-mark" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <rect width="1024" height="1024" fill="#fafafa"></rect>
+        <g transform="translate(162, 162)">
+          <path d="M350 0C156.7 0 0 156.7 0 350C0 543.3 156.7 700 350 700C543.3 700 700 543.3 700 350C700 303.3 690.7 256.7 672 214.7L536.7 350C536.7 453.1 453.1 536.7 350 536.7C246.9 536.7 163.3 453.1 163.3 350C163.3 246.9 246.9 163.3 350 163.3C385 163.3 415.3 172.7 443.3 186.7L571.7 58.3C508.7 21 431.7 0 350 0Z" fill="#111111"></path>
+        </g>
+      </svg>
+      CIOFLEXLABS
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#apps">Apps</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Get in touch -&gt;</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#apps">Apps</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
 </header>
 
-<section class="relative z-10 flex min-h-0 flex-1 items-start px-5 py-8 sm:px-8 sm:py-10 md:items-center md:py-0 lg:px-10">
-  <div class="grid w-full grid-cols-12 items-center gap-6 sm:gap-8 lg:gap-12">
-    <div class="col-span-12 md:col-span-7">
-      <div class="inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-[9px] tracking-[0.18em] backdrop-blur-md sm:text-[11px] sm:tracking-widest" style="border: 1px solid var(--border); background: oklch(0.16 0.014 55 / 0.4); color: var(--muted-fg)">
-        <span style="color: oklch(0.85 0.13 75)">✦</span><span>ONE-PERSON STUDIO · 2026</span>
-      </div>
-      <h1 class="mt-3 font-display leading-[0.95] tracking-tight sm:mt-5" style="font-size: clamp(2.25rem, 7vw, 7rem)">
-        Sparkling products<br/>
-        from the <span class="italic" style="background-image: linear-gradient(135deg, oklch(0.92 0.13 85), oklch(0.72 0.16 60)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent">quiet edge</span>.
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow reveal"><span class="dot"></span> Independent mobile app studio</span>
+      <h1 class="display reveal" data-delay="1">
+        Building What's Next<br/>
+        <span class="accent">In Mobile Apps</span>
       </h1>
-      <p class="mt-3 max-w-xl text-[12px] leading-relaxed sm:mt-6 sm:text-[15px]" style="color: var(--muted-fg)">
-        An independent maker. Design, code, and details from a single hand. Translating the soul of brands into software with a few, carefully crafted digital products.
+      <p class="lead reveal" data-delay="2">
+        We create mobile apps focused on clean design, smooth experiences and real user value.
       </p>
-      <div class="mt-5 flex flex-wrap items-center gap-2.5 sm:mt-8 sm:gap-3.5">
-        <a href="mailto:hello@cioflexlabs.com" class="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-semibold sm:px-7 sm:py-3.5 sm:text-sm" style="background: linear-gradient(135deg, oklch(0.92 0.13 85), oklch(0.72 0.16 60)); color: #000; box-shadow: 0 0 60px -10px oklch(0.85 0.13 75 / 0.5)">Start a project ↗</a>
-        <a href="/dopamine" class="btn-ghost rounded-full px-5 py-2.5 text-[13px] font-medium sm:px-7 sm:py-3.5 sm:text-sm">View works</a>
+      <div class="hero-actions reveal" data-delay="3">
+        <a href="#apps" class="btn btn-primary">Explore Apps
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-ghost">Contact Us</a>
       </div>
     </div>
+  </section>
 
-    <div class="col-span-12 md:col-span-5">
-      <article class="relative ml-auto w-full max-w-md overflow-hidden rounded-2xl backdrop-blur-xl" style="border: 1px solid var(--border); background: linear-gradient(160deg, oklch(0.20 0.012 80 / 0.75), oklch(0.14 0.008 80 / 0.55))">
-        <div class="flex items-center justify-between border-b px-5 py-3 text-[10px] tracking-[0.2em]" style="border-color: var(--border); color: var(--muted-fg)">
-          <span>SELECTED WORK — 01 / 01</span>
-          <span class="inline-flex items-center gap-1.5" style="color: oklch(0.85 0.13 75)"><span class="h-1.5 w-1.5 rounded-full" style="background: oklch(0.85 0.13 75)"></span>LIVE</span>
+  <!-- PURPOSE STRIP -->
+  <section class="purpose" id="purpose">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">What we do</div>
+        <h2 class="section-title display">Mobile apps with purpose.</h2>
+        <p class="section-sub">Cioflex Labs builds apps with a focus on product quality, performance, design and user experience.</p>
+      </div>
+      <div class="purpose-grid">
+        <div class="purpose-item reveal">
+          <span class="purpose-num">01</span>
+          <h3>Design-led</h3>
+          <p>Every screen is crafted with attention to typography, motion and tactile detail.</p>
         </div>
-        <div class="flex items-center gap-4 px-5 pt-5">
-          <div class="grid h-12 w-12 shrink-0 place-items-center rounded-xl" style="border: 1px solid var(--border); background: linear-gradient(145deg, oklch(0.28 0.02 80), oklch(0.16 0.01 80))">
-            <span class="font-display text-2xl italic" style="background-image: linear-gradient(135deg, oklch(0.92 0.13 85), oklch(0.72 0.16 60)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent">D</span>
+        <div class="purpose-item reveal" data-delay="1">
+          <span class="purpose-num">02</span>
+          <h3>Performance first</h3>
+          <p>Fast launches, fluid animations and a small footprint on every device.</p>
+        </div>
+        <div class="purpose-item reveal" data-delay="2">
+          <span class="purpose-num">03</span>
+          <h3>Built to last</h3>
+          <p>Products are continuously improved based on real usage and user feedback.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPS -->
+  <section id="apps">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">Our apps</div>
+        <h2 class="section-title display">Products people<br/>actually use.</h2>
+      </div>
+
+      <div class="apps-wrap">
+
+        <!-- APP CARD TEMPLATE - duplicate this block to add a new app -->
+        <article class="app-card reveal" style="--grad:radial-gradient(circle at 50% 12%, #fffaf3 0%, #f7efe5 42%, #eadbca 72%, #d7c0ab 100%)">
+          <div class="content">
+            <div>
+              <div class="app-icon"><img src="assets/momentoid-logo.png" alt="Momentoid logo" /></div>
+              <div class="app-cat">Photo &amp; Memories App</div>
+              <h3 class="app-name">Momentoid</h3>
+              <p class="app-desc">Turn your phone into a vintage instant camera! Capture authentic retro photos with realistic sounds, beautiful analog film filters, and custom handwritten notes.</p>
+            </div>
+            <div class="app-buttons">
+              <a class="store-btn" href="#" data-app-store-modal="true" data-app-name="Momentoid"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 12.3c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.6-.9-2.6-3.9zM14 4.6c.7-.8 1.1-1.9 1-3-1 .1-2.1.7-2.8 1.5-.6.7-1.2 1.9-1 2.9 1.1.1 2.2-.6 2.8-1.4z"/></svg>App Store</a>
+            </div>
           </div>
-          <div class="min-w-0">
-            <div class="font-display text-2xl leading-tight">Dopamine!</div>
-            <div class="truncate text-[12px]" style="color: var(--muted-fg)">Dopamine Simulator · iOS 26+</div>
+          <div class="visual">
+            <div class="phone"><div class="notch"></div><div class="screen"><img src="assets/momentoid-screen.png" alt="Momentoid app screen" /></div></div>
+          </div>
+        </article>
+
+        <article class="app-card reveal" style="--grad:radial-gradient(circle at 50% 18%, #fffdf2 0%, #f8fbff 38%, #dbeafe 68%, #93c5fd 100%)">
+          <div class="content">
+            <div>
+              <div class="app-icon"><img src="assets/sakli-kelime-logo.png" alt="Sakli Kelime logo" /></div>
+              <div class="app-cat">Word Puzzle Game</div>
+              <h3 class="app-name">Sakl&#305; Kelime</h3>
+              <p class="app-desc">Guess the daily 5-letter word in 6 tries, duel with friends, climb the leaderboard, and experience a competitive Turkish word game.</p>
+            </div>
+            <div class="app-buttons">
+              <a class="store-btn" href="#" aria-label="Download Sakl&#305; Kelime on the App Store" data-app-store-modal="true" data-app-name="Sakli Kelime">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 12.3c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.6-.9-2.6-3.9zM14 4.6c.7-.8 1.1-1.9 1-3-1 .1-2.1.7-2.8 1.5-.6.7-1.2 1.9-1 2.9 1.1.1 2.2-.6 2.8-1.4z"/></svg>
+                App Store
+              </a>
+            </div>
+          </div>
+          <div class="visual">
+            <div class="phone"><div class="notch"></div><div class="screen"><img src="assets/sakli-kelime-screen.png" alt="Sakli Kelime app screen" /></div></div>
+          </div>
+        </article>
+
+        <article class="app-card reveal" style="--grad:radial-gradient(circle at 50% 12%, #fff4ec 0%, #ffe0cf 34%, #ffb183 68%, #ff8a5b 100%)">
+          <div class="content">
+            <div>
+              <div class="app-icon"><img src="assets/dopamine-logo.png" alt="Dopamine logo" /></div>
+              <div class="app-cat">Shopping Simulator</div>
+              <h3 class="app-name">Dopamine</h3>
+              <p class="app-desc">Place orders, track your courier live, complete tasks, and grow your own delivery economy. Step into a fast, stylized simulation with Dopamine!</p>
+            </div>
+            <div class="app-buttons">
+              <a class="store-btn" href="#" data-app-store-modal="true" data-app-name="Dopamine"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 12.3c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.6-.9-2.6-3.9zM14 4.6c.7-.8 1.1-1.9 1-3-1 .1-2.1.7-2.8 1.5-.6.7-1.2 1.9-1 2.9 1.1.1 2.2-.6 2.8-1.4z"/></svg>App Store</a>
+            </div>
+          </div>
+          <div class="visual">
+            <div class="phone"><div class="notch"></div><div class="screen"><img src="assets/dopamine-screen.png" alt="Dopamine app screen" /></div></div>
+          </div>
+        </article>
+        <!-- /APP CARD TEMPLATE -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal">
+          <div class="section-eyebrow">About</div>
+          <h2 class="section-title display">Built by an independent mobile developer.</h2>
+          <p class="section-sub">From idea to App Store, every product is designed, developed and improved with care - shipping focused apps that respect your time and attention.</p>
+        </div>
+        <div class="about-card reveal" data-delay="1">
+          <div class="section-eyebrow" style="color:#888">By the numbers</div>
+          <h3 class="display" style="font-size:34px;color:#fff;margin-top:6px">A small studio, shipping consistently.</h3>
+          <div class="about-stats">
+            <div class="stat"><div class="num">3</div><div class="lbl">Live apps</div></div>
+            <div class="stat"><div class="num">1</div><div class="lbl">Platforms</div></div>
+            <div class="stat"><div class="num">100%</div><div class="lbl">Independent</div></div>
+            <div class="stat"><div class="num">&infin;</div><div class="lbl">Iterations</div></div>
           </div>
         </div>
-        <div class="px-5 pt-4">
-          <div class="flex items-end justify-between text-[10px] tracking-[0.18em]" style="color: var(--muted-fg)">
-            <span>GROWTH · LAST 9 WEEKS</span><span style="color: oklch(0.85 0.13 75)">+ 120 %</span>
-          </div>
-          <svg viewBox="0 0 300 60" class="mt-2 h-12 w-full" preserveAspectRatio="none">
-            <defs><linearGradient id="ln" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="oklch(0.85 0.13 75)" stop-opacity="0.35"/><stop offset="100%" stop-color="oklch(0.85 0.13 75)" stop-opacity="0"/></linearGradient></defs>
-            <path d="M0,50 L37,45 L75,40 L112,34 L150,28 L187,22 L225,18 L262,12 L300,5 L300,60 L0,60 Z" fill="url(#ln)"/>
-            <path d="M0,50 L37,45 L75,40 L112,34 L150,28 L187,22 L225,18 L262,12 L300,5" fill="none" stroke="oklch(0.85 0.13 75)" stroke-width="1.25"/>
-          </svg>
-        </div>
-        <a href="/dopamine" class="mt-3 flex items-center justify-between border-t px-5 py-3.5 text-[11px] font-semibold tracking-[0.18em] sm:py-4 sm:text-[12px]" style="border-color: var(--border); color: var(--muted-fg)">
-          <span>Go to App</span><span style="color: oklch(0.85 0.13 75)">↗</span>
-        </a>
-      </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">Contact</div>
+        <h2 class="section-title display">Let's build something useful.</h2>
+        <p class="section-sub" style="margin-left:auto;margin-right:auto">Have an idea, a partnership or a question? Drop a line - I read every email.</p>
+      </div>
+      <a class="contact-email reveal" data-delay="1" href="mailto:hello@cioflexlabs.com">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 7 9 6 9-6"/></svg>
+        hello@cioflexlabs.com
+      </a>
+    </div>
+  </section>
+</main>
+
+<div class="modal" id="appStoreModal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="appStoreModalTitle">
+    <button class="modal-close" id="appStoreModalClose" aria-label="Close modal">×</button>
+    <h3 id="appStoreModalTitle">App Store In Review</h3>
+    <p id="appStoreModalText">This app is currently in review status on the App Store and is not active yet.</p>
+    <p>Public release is expected within 1 week. TestFlight access is available upon request at hello@cioflexlabs.com.</p>
+    <div class="modal-actions">
+      <button class="btn btn-primary" id="appStoreModalOkay">Okay</button>
     </div>
   </div>
-</section>
-</main>
-<footer class="relative z-10 flex shrink-0 items-center justify-between gap-4 border-t px-5 py-5 text-[9px] tracking-[0.18em] backdrop-blur-md sm:px-8 sm:py-6 sm:text-[11px] sm:tracking-widest lg:px-10" style="border-color: var(--border); color: var(--muted-fg); background: oklch(0.13 0.012 60 / 0.4)">
-  <span class="truncate">ISTANBUL · REMOTE</span>
-  <div class="hidden items-center gap-8 md:flex"><span>SWIFT</span><span>REACT</span><span>MOTION</span><span>FIGMA</span></div>
-  <span class="truncate">2026 © CIOFLEXLABS</span>
+</div>
+
+<footer>
+  <div class="container foot">
+    <div>&copy; 2026 Cioflex Labs. All rights reserved.</div>
+    <div>Designed &amp; built in-house.</div>
+  </div>
 </footer>
-</body></html>
+
+<script>
+  // sticky nav shadow
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
+  document.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // mobile menu
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('mobileMenu');
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('open'); btn.setAttribute('aria-expanded','false');
+  }));
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }});
+  }, {threshold: .12, rootMargin: '0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // app store modal
+  const appStoreModal = document.getElementById('appStoreModal');
+  const appStoreModalClose = document.getElementById('appStoreModalClose');
+  const appStoreModalOkay = document.getElementById('appStoreModalOkay');
+  const appStoreModalTitle = document.getElementById('appStoreModalTitle');
+  const appStoreModalText = document.getElementById('appStoreModalText');
+  const openAppStoreModal = (appName) => {
+    appStoreModalTitle.textContent = `${appName} Is In Review`;
+    appStoreModalText.textContent = `${appName} is currently in review status on the App Store and is not active yet.`;
+    appStoreModal.classList.add('open');
+    appStoreModal.setAttribute('aria-hidden', 'false');
+  };
+  const closeAppStoreModal = () => {
+    appStoreModal.classList.remove('open');
+    appStoreModal.setAttribute('aria-hidden', 'true');
+  };
+  document.querySelectorAll('[data-app-store-modal="true"]').forEach(link => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      openAppStoreModal(link.dataset.appName || 'This app');
+    });
+  });
+  appStoreModalClose.addEventListener('click', closeAppStoreModal);
+  appStoreModalOkay.addEventListener('click', closeAppStoreModal);
+  appStoreModal.addEventListener('click', (event) => {
+    if (event.target === appStoreModal) closeAppStoreModal();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && appStoreModal.classList.contains('open')) closeAppStoreModal();
+  });
+</script>
+</body>
+</html>
